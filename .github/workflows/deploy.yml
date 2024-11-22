@@ -55,7 +55,8 @@ jobs:
           RASPBERRY_PI_PASSWORD: ${{ secrets.RASPBERRY_PI_PASSWORD }}
           RASPBERRY_PI_IP: ${{ secrets.RASPBERRY_PI_IP }}
         run: |
-          sshpass -p $RASPBERRY_PI_PASSWORD ssh -o StrictHostKeyChecking=no pi@$RASPBERRY_PI_IP \
+          sshpass -p $RASPBERRY_PI_PASSWORD ssh -o StrictHostKeyChecking=no \
+          -o ServerAliveInterval=120 -o ServerAliveCountMax=100 pi@$RASPBERRY_PI_IP \
           "bash -s" << 'EOF'
             # Pull the latest image from Docker Hub
             echo "Pulling the latest Docker image from Docker Hub..."
