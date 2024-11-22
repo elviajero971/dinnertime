@@ -13,7 +13,7 @@ COPY Gemfile Gemfile.lock ./
 # Install Bundler and the required gems
 RUN bundle install
 
-RUN rake assets:precompile RAILS_ENV=production
+RUN bundle exec rake assets:precompile RAILS_ENV=production
 
 # Set up env
 ENV RAILS_ENV production
