@@ -8,10 +8,10 @@ services:
       - RAILS_SERVE_STATIC_FILES=true
       - RAILS_MASTER_KEY=c1c416f6e26b3d09fa9bc3ba2c95187b
     ports:
-      - "3001:3000"
+      - "3001:3001"
     volumes:
       - ./db/production.sqlite3:/app/db/production.sqlite3  # Mount the SQLite file to persist data
-    command: bundle exec rails s -b '0.0.0.0' -p 3000
+    command: bundle exec rails s -b '0.0.0.0' -p 3001
 
   nginx:
     image: nginx:latest
