@@ -10,15 +10,17 @@ RUN apt-get update && apt-get install -y --no-install-recommends build-essential
 # Copy Gemfile and Gemfile.lock to Docker container
 COPY Gemfile Gemfile.lock ./
 
-# Install Bundler and the required gems
-RUN bundle install
-
-RUN bundle exec rake assets:precompile RAILS_ENV=production
-
 # Set up env
 ENV RAILS_ENV production
 ENV RAILS_SERVE_STATIC_FILES true
 ENV RAILS_LOG_TO_STDOUT true
+
+# Install Bundler and the required gems
+RUN bundle install
+
+RUN bundle exec rake assets:precompile
+
+
 
 # Copy the entire Rails application into the container
 COPY . .
