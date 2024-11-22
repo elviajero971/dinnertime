@@ -18,12 +18,10 @@ ENV RAILS_LOG_TO_STDOUT true
 # Install Bundler and the required gems
 RUN bundle install
 
-RUN bundle exec rake assets:precompile
-
-
-
 # Copy the entire Rails application into the container
 COPY . .
+
+RUN bundle exec rake assets:precompile
 
 # **Use an argument for the master key**
 ARG RAILS_MASTER_KEY
