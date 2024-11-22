@@ -1,0 +1,23 @@
+version: '3.8'
+
+services:
+  app:
+    image: elviajero34/scubadiving-app:latest
+    environment:
+      - RAILS_ENV=production
+      - RAILS_SERVE_STATIC_FILES=true
+      - RAILS_MASTER_KEY=62f170c11905ca2babdb123ec0301f01
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./db/production.sqlite3:/app/db/production.sqlite3  # Mount the SQLite file to persist data
+    command: bundle exec rails s -b '0.0.0.0' -p 3000
+
+  nginx:
+    image: nginx:latest
+    depends_on:
+      - app
+    ports:
+      - "8080:80"
+    volumes:
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf
