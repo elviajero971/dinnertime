@@ -18,6 +18,9 @@ ENV RAILS_LOG_TO_STDOUT true
 ARG SECRET_KEY_BASE
 ENV SECRET_KEY_BASE=$SECRET_KEY_BASE
 
+ARG RAILS_MASTER_KEY
+ENV RAILS_MASTER_KEY=$RAILS_MASTER_KEY
+
 # Install Bundler and the required gems
 RUN bundle install
 
@@ -25,10 +28,6 @@ RUN bundle install
 COPY . .
 
 RUN bundle exec rake assets:precompile
-
-# **Use an argument for the master key**
-ARG RAILS_MASTER_KEY
-ENV RAILS_MASTER_KEY=$RAILS_MASTER_KEY
 
 # Expose the Rails default port 3001
 EXPOSE 3001

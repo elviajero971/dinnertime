@@ -21,9 +21,17 @@ jobs:
       - name: Build and Push Docker Image
         env:
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+          RAILS_MASTER_KEY: ${{ secrets.RAILS_MASTER_KEY }}
+          SECRET_KEY_BASE: ${{ secrets.SECRET_KEY_BASE }}
         run: |
           docker login -u elviajero34 -p $DOCKERHUB_PASSWORD
-          docker buildx build --platform linux/arm/v7 --tag elviajero34/dinnertime:latest . --push
+          docker buildx build --platform linux/arm/v7 \
+          --build-arg RAILS_MASTER_KEY=$RAILS_MASTER_KEY \
+          --build-arg SECRET_KEY_BASE=$SECRET_KEY_BASE \
+          --tag elviajero34/dinnertime:latest . \
+          --push
+          
+          
 
       # Transfer docker-compose.yml and nginx.conf to Raspberry Pi
       - name: Transfer docker-compose.yml to Raspberry Pi
