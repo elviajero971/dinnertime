@@ -9,9 +9,8 @@ services:
     ports:
       - "3001:3001"
     volumes:
-      - ./db/production.sqlite3:/app/db/production.sqlite3  # Mount the SQLite file to persist data
+      - ./db/production.sqlite3:/app/db/production.sqlite3
     command: bundle exec rails s -b '0.0.0.0' -p 3001
-
   nginx:
     image: nginx:latest
     depends_on:
