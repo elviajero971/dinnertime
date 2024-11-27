@@ -1,12 +1,6 @@
 class Api::RecipesController < ApplicationController
   def index
-    if params[:search].present?
-      search = params[:search].downcase.split(",").map(&:strip)
-      search = search.join("%")
-      @recipes = Recipe.where("lower(ingredients) LIKE ?", "%#{search}%").order(:title)
-    else
-      @recipes = Recipe.all.order(:title)
-    end
+    @recipes = ::Recipes::RecipesQuery.perform(params[:search])
 
     @recipes = @recipes.page(params[:page]).per(30)
 

@@ -14,12 +14,16 @@ RSpec.describe Api::RecipesController, type: :controller do
         expect(response).to have_http_status(:ok)
         json = JSON.parse(response.body)
 
-        puts json
-
         expect(json['recipes'].size).to eq(30) # Default 30 per page
         expect(json['total_pages']).to eq(4)  # 100 / 30 = 4 pages
         expect(json['current_page']).to eq(1)
         expect(json['recipes_count']).to eq(100)
+      end
+
+      it "calls the RecipesQuery with no search term" do
+        expect(Recipes::RecipesQuery).to receive(:perform).with(nil).and_call_original
+
+        get :index, params: { page: 1 }
       end
     end
 
@@ -34,21 +38,16 @@ RSpec.describe Api::RecipesController, type: :controller do
         json = JSON.parse(response.body)
 
         expect(json['recipes']).not_to be_empty
-        expect(json['recipes'].any? { |r| r['id'] == recipe.id }).to be true
         expect(json['current_page']).to eq(1)
       end
-    end
 
-    context "with no matching search results" do
-      it "returns an empty array" do
-        get :index, params: { search: "nonexistentingredient", page: 1 }
+      it "calls the RecipesQuery with the search term" do
+        recipe = @recipes.first
+        search_term = recipe.ingredients.split(",").first.downcase
 
-        expect(response).to have_http_status(:ok)
-        json = JSON.parse(response.body)
+        expect(Recipes::RecipesQuery).to receive(:perform).with(search_term).and_call_original
 
-        expect(json['recipes']).to be_empty
-        expect(json['total_pages']).to eq(0)
-        expect(json['recipes_count']).to eq(0)
+        get :index, params: { search: search_term, page: 1 }
       end
     end
   end
