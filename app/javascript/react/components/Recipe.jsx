@@ -15,7 +15,7 @@ const Recipe = forwardRef(({ recipe }, ref) => {
 
     return (
         <li
-            className="border-2 border-gray-300 rounded-lg overflow-hidden w-72 text-left bg-white shadow-md cursor-pointer flex flex-col justify-center transition-transform duration-300 hover:scale-105"
+            className="border-2 border-blue-300 rounded-lg overflow-hidden w-72 text-left bg-white shadow-md cursor-pointer flex flex-col justify-center transition-transform duration-300 hover:border-blue-700"
             ref={ref}
             onClick={navigateToRecipe}
         >
