@@ -90,9 +90,9 @@ jobs:
           
             # Create a new database if it doesn't exist
             echo "Creating a new database..."
-            docker-compose exec app bundle exec rake db:create RAILS_ENV=production
+            docker exec -it dinnertime-app-1 bundle exec rake db:create RAILS_ENV=production
           
             # Run database migrations
             echo "Running database migrations..."
-            docker-compose exec app bundle exec rake db:migrate RAILS_ENV=production
+            docker exec -it dinnertime-app-1 bundle exec rake db:migrate RAILS_ENV=production
           EOF
