@@ -7,7 +7,6 @@ import { createRoot } from 'react-dom/client';
 export default class extends Controller {
   static targets = ['root'];
   connect() {
-    console.log("Hello, Stimulus!");
     const app = document.getElementById('app');
 
     const root = createRoot(app);

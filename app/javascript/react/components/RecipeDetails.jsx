@@ -16,7 +16,6 @@ const RecipeDetails = () => {
             try {
                 const response = await fetch(`/api/recipes/show?id=${id}`);
                 const data = await response.json();
-                console.log("data recipe details", data);
                 setRecipe(data);
             } catch (error) {
                 console.error('Error fetching recipe details:', error);
