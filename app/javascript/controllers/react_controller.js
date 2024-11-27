@@ -1,6 +1,6 @@
 import { Controller } from "@hotwired/stimulus"
 import React from 'react';
-import App from '../components/App';
+import App from '../react/App';
 import { createRoot } from 'react-dom/client';
 
 // Connects to data-controller="react"
