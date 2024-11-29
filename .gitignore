@@ -39,3 +39,9 @@
 
 /node_modules
 .idea
+
+# remove db dqlite
+/db/development.sqlite3
+/db/test.sqlite3
+/db/*.sqlite3-wal
+/db/*.sqlite3-shm

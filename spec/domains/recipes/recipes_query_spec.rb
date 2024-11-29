@@ -30,8 +30,6 @@ RSpec.describe Recipes::RecipesQuery, type: :query do
         query = Recipes::RecipesQuery.new('Cheese, Tomato')
         result = query.perform
 
-        puts result.inspect
-
         expect(result).to eq([ recipe2, recipe1 ])
       end
 

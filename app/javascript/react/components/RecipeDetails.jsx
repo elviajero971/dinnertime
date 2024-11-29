@@ -57,7 +57,7 @@ const RecipeDetails = () => {
             <p className="text-gray-600 mb-4">
                 <strong className="font-semibold">Prep Time:</strong> {recipe.prep_time} minutes
             </p>
-            <Ingredients ingredients={recipe.ingredients} /> {/* Render the Ingredients component */}
+            <Ingredients ingredients={recipe.ingredients} />
             <p className="text-gray-600 mb-4">
                 <strong className="font-semibold">Category:</strong> {recipe.category}
             </p>

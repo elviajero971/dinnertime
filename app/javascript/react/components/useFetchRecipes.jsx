@@ -16,8 +16,6 @@ const useFetchRecipes = (currentPage, searchQuery) => {
             );
             const data = await response.json();
 
-            console.log("data", data);
-
             setRecipesCount(data.recipes_count);
 
             if (currentPage === 1) {

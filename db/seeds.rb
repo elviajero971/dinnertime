@@ -20,7 +20,7 @@ time_taken = Benchmark.measure do
         title: recipe['title'],
         cook_time: recipe['cook_time'],
         prep_time: recipe['prep_time'],
-        ingredients: recipe['ingredients'].join(', '),
+        ingredients: recipe['ingredients'],
         ratings: recipe['ratings'],
         category: recipe['category'],
         author: recipe['author'],
