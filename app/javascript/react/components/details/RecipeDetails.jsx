@@ -36,39 +36,43 @@ const RecipeDetails = () => {
     }
 
     return (
-        <div className="p-6 max-w-3xl mx-auto bg-white">
-            <button
-                className="text-blue-500 hover:text-blue-700 font-semibold mb-4"
-                onClick={() => navigate('/')}
-            >
-                &larr; Back to Recipes List
-            </button>
-            <h1 className="text-2xl font-bold text-gray-800 mb-6">{recipe.title}</h1>
-            <AsyncImage
-                className="w-full h-64 object-cover rounded-md mb-6 flex justify-center items-center"
-                src={recipe.image_url}
-                alt={recipe.title}
-                loader={<Spinner />}
-                Transition={Fade}
-            />
-            <p className="text-gray-600 mb-4">
-                <strong className="font-semibold">Cook Time:</strong> {recipe.cook_time} minutes
-            </p>
-            <p className="text-gray-600 mb-4">
-                <strong className="font-semibold">Prep Time:</strong> {recipe.prep_time} minutes
-            </p>
-            <Ingredients ingredients={recipe.ingredients} />
-            <p className="text-gray-600 mb-4">
-                <strong className="font-semibold">Category:</strong> {recipe.category}
-            </p>
-            <p className="text-gray-600 mb-4">
-                <strong className="font-semibold">Author:</strong> {recipe.author}
-            </p>
-            <p className="text-gray-600 mb-4">
-                <strong className="font-semibold">Ratings:</strong> {recipe.ratings} / 5
-            </p>
-        </div>
-    );
-};
+        <div className="my-12 w-full mx-auto flex justify-center">
+            <div className="w-2/3 flex flex-col justify-center">
+                <button
+                    className="text-blue-500 hover:text-blue-700 font-semibold mb-4"
+                    onClick={() => navigate('/')}
+                >
+                    &larr; Back to Recipes List
+                </button>
+                <h1 className="text-3xl font-bold text-gray-800 mb-6">{recipe.title}</h1>
+                <AsyncImage
+                    className="w-full h-96 object-cover rounded-md mb-6"
+                    src={recipe.image_url}
+                    alt={recipe.title}
+                    loader={<Spinner/>}
+                    Transition={Fade}
+                />
+                <p className="text-gray-600 mb-4">
+                    <strong className="font-semibold">Cook Time:</strong> {recipe.cook_time} minutes
+                </p>
+                <p className="text-gray-600 mb-4">
+                    <strong className="font-semibold">Prep Time:</strong> {recipe.prep_time} minutes
+                </p>
+                <div className="flex justify-center">
+                    <Ingredients ingredients={recipe.ingredients}/>
+                </div>
+                <p className="text-gray-600 mb-4">
+                    <strong className="font-semibold">Category:</strong> {recipe.category}
+                </p>
+                <p className="text-gray-600 mb-4">
+                    <strong className="font-semibold">Author:</strong> {recipe.author}
+                </p>
+                <p className="text-gray-600 mb-4">
+                    <strong className="font-semibold">Ratings:</strong> {recipe.ratings} / 5
+                </p>
+                </div>
+            </div>
+            );
+            };
 
-export default RecipeDetails;
+            export default RecipeDetails;
