@@ -3,7 +3,7 @@ import React, { forwardRef } from 'react';
 import { useNavigate } from "react-router-dom";
 import { Fade } from 'transitions-kit'
 import { AsyncImage } from 'loadable-image';
-import Spinner from './Spinner';
+import Spinner from '../Spinner';
 
 // Use forwardRef to handle the ref properly
 const Recipe = forwardRef(({ recipe }, ref) => {

@@ -21,7 +21,7 @@ RSpec.describe Api::RecipesController, type: :controller do
       end
 
       it "calls the RecipesQuery with no search term" do
-        expect(Recipes::RecipesQuery).to receive(:perform).with(nil).and_call_original
+        expect(Recipes::RecipesQuery).to receive(:perform).with(search: nil, page: "1", per_page: 30).and_call_original
 
         get :index, params: { page: 1 }
       end
@@ -45,7 +45,7 @@ RSpec.describe Api::RecipesController, type: :controller do
         recipe = @recipes.first
         search_term = recipe.ingredients.split(",").first.downcase
 
-        expect(Recipes::RecipesQuery).to receive(:perform).with(search_term).and_call_original
+        expect(Recipes::RecipesQuery).to receive(:perform).with(search: search_term, page: "1", per_page: 30).and_call_original
 
         get :index, params: { search: search_term, page: 1 }
       end

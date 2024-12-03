@@ -2,25 +2,25 @@ module Recipes
   class RecipesQuery
     include Query
 
-    def initialize(ingredient_search_param)
-      @ingredient_search_param = ingredient_search_param
+    def initialize(search: nil, page:, per_page:)
+      @search = search
+      @page = page
+      @per_page = per_page
     end
 
     def perform
-      recipes = Recipe.all.order(:title)
-      return recipes if ingredient_search_param.blank?
+      recipes = Recipe.all.order(:title).page(page).per(per_page)
+      return recipes if search.blank?
 
-      search_terms = ingredient_search_param.downcase.split(",").map(&:strip)
+      search_terms = search&.downcase&.split(",")&.map(&:strip)
+      query = search_terms&.map { "ingredients LIKE ?" }.join(" AND ")
+      values = search_terms&.map { |term| "%#{term}%" }
 
-      query = search_terms.map { "ingredients LIKE ?" }.join(" AND ")
-      values = search_terms.map { |term| "%#{term}%" }
-
-      # Execute the query
-      @recipes = Recipe.where(query, *values).order(:title)
+      Recipe.where(query, *values).order(:title).page(page).per(per_page)
     end
 
     private
 
-      attr_reader :ingredient_search_param
+      attr_reader :search, :page, :per_page
   end
 end

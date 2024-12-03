@@ -3,7 +3,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import SearchBar from './SearchBar';
 import RecipesListHeader from './RecipesListHeader';
 import RecipeContainer from './RecipesListContainer';
-import useFetchRecipes from './useFetchRecipes';
+import useFetchRecipes from '../../hooks/useFetchRecipes';
 
 const RecipeList = () => {
     const [currentPage, setCurrentPage] = useState(1);

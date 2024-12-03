@@ -1,5 +1,6 @@
 // src/components/useFetchRecipes.js
 import { useState } from 'react';
+import { fetchRecipesApi } from '../api/fetch';
 
 const useFetchRecipes = (currentPage, searchQuery) => {
     const [recipes, setRecipes] = useState([]);
@@ -10,11 +11,9 @@ const useFetchRecipes = (currentPage, searchQuery) => {
     const fetchRecipes = async () => {
         if (loading) return;
         setLoading(true);
+
         try {
-            const response = await fetch(
-                `/api/recipes/index?page=${currentPage}&search=${searchQuery}`
-            );
-            const data = await response.json();
+            const data = await fetchRecipesApi(currentPage, searchQuery);
 
             setRecipesCount(data.recipes_count);
 
@@ -26,8 +25,9 @@ const useFetchRecipes = (currentPage, searchQuery) => {
 
             setHasMore(data.recipes.length > 0);
         } catch (error) {
-            console.error('Error fetching recipes:', error);
+            console.error('Error in useFetchRecipes:', error);
         }
+
         setLoading(false);
     };
 

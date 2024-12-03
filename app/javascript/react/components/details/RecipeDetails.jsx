@@ -2,21 +2,21 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { AsyncImage } from 'loadable-image';
-import Spinner from './Spinner';
-import {Fade} from "transitions-kit";
+import Spinner from '../Spinner';
+import { Fade } from "transitions-kit";
 import Ingredients from "./Ingredients";
+import { fetchRecipeDetailsApi } from '../../api/fetch';
 
 const RecipeDetails = () => {
     const { id } = useParams();
     const [recipe, setRecipe] = useState(null);
     const [loading, setLoading] = useState(true);
-    const navigate = useNavigate(); // Use the navigate hook
+    const navigate = useNavigate();
 
     useEffect(() => {
         const fetchRecipe = async () => {
             try {
-                const response = await fetch(`/api/recipes/show?id=${id}`);
-                const data = await response.json();
+                const data = await fetchRecipeDetailsApi(id);
                 setRecipe(data);
             } catch (error) {
                 console.error('Error fetching recipe details:', error);
@@ -48,7 +48,7 @@ const RecipeDetails = () => {
                 className="w-full h-64 object-cover rounded-md mb-6 flex justify-center items-center"
                 src={recipe.image_url}
                 alt={recipe.title}
-                loader={<Spinner/>}
+                loader={<Spinner />}
                 Transition={Fade}
             />
             <p className="text-gray-600 mb-4">
@@ -68,7 +68,6 @@ const RecipeDetails = () => {
                 <strong className="font-semibold">Ratings:</strong> {recipe.ratings} / 5
             </p>
         </div>
-
     );
 };
 
