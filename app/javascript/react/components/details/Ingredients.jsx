@@ -3,6 +3,11 @@ import React from 'react';
 import Ingredient from './Ingredient';
 
 const Ingredients = ({ ingredients }) => {
+
+    if (!ingredients || ingredients.length === 0) {
+        return <p className="text-gray-600">No ingredients available.</p>;
+    }
+
     return (
         <div className="p-4">
             <h2 className="text-xl font-bold text-gray-800 mb-4">Ingredients</h2>
