@@ -4,12 +4,14 @@ A full-stack web application built with **Ruby on Rails** and **React** that all
 
 ---
 
-## 🚀 Features
-- View a list of recipes with images and names.
-- Filter recipes by typing one or more ingredients.
-- Click on a recipe from the list to see details about it.
+## 🚀 User Stories
+- As a user, I want to see a list of recipes with their images and names, so I can quickly browse through available options.
+- As a user, I want to filter the recipe list by typing one or more ingredients, so I can find recipes that match what I have on hand.
+- As a user, I want to click on a recipe from the list to see detailed information about it, including ingredients, preparation time, and instructions.
 
 ---
+
+## 🚀 Features
 
 ## 🛠️ Getting Started
 
@@ -38,8 +40,10 @@ A full-stack web application built with **Ruby on Rails** and **React** that all
     ```bash
     rails db:create db:migrate db:seed
     ```
-   
-4. **Start the server**:
-    ```bash
-   foreman start -f Procfile.dev
-    ```
+
+### Running the app
+
+**Start the server with foreman using the Procfile**:
+   ```bash
+    foreman start -f Procfile.dev
+   ```
