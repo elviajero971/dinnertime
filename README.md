@@ -5,13 +5,16 @@ A full-stack web application built with **Ruby on Rails** and **React** that all
 ---
 
 ## 🚀 User Stories
-- As a user, I want to see a list of recipes with their images and names, so I can quickly browse through available options.
+- As a user, I want to see a list of recipes with their images and names, so I can quickly scroll through available options.
 - As a user, I want to filter the recipe list by typing one or more ingredients, so I can find recipes that match what I have on hand.
 - As a user, I want to click on a recipe from the list to see detailed information about it, including ingredients, preparation time, and instructions.
 
 ---
 
-## 🚀 Features
+## 🚀 Live Demo
+
+You can access the live demo of the app by visiting the following link:
+[https://dinnertime.nomadev.online/](https://dinnertime.nomadev.online/)
 
 ## 🛠️ Getting Started
 
