@@ -42,8 +42,16 @@ A full-stack web application built with **Ruby on Rails** and **React** that all
     ```
 
 ### Running the app
-
 **Start the server with foreman using the Procfile**:
    ```bash
     foreman start -f Procfile.dev
+   ```
+
+**Access the app**:
+- Open your browser and navigate to `http://localhost:3000/`
+
+### Running tests
+**Run the test suite**:
+   ```bash
+    rspec .
    ```
