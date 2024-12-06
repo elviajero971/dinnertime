@@ -4,6 +4,8 @@ import { useNavigate } from "react-router-dom";
 import { Fade } from 'transitions-kit'
 import { AsyncImage } from 'loadable-image';
 import Spinner from '../Spinner';
+import {formatText, formatUrlImageSmall} from '../../utils/formatters';
+
 
 // Use forwardRef to handle the ref properly
 const Recipe = forwardRef(({ recipe }, ref) => {
@@ -19,11 +21,11 @@ const Recipe = forwardRef(({ recipe }, ref) => {
             ref={ref}
             onClick={navigateToRecipe}
         >
-            <h2 className="text-xl font-semibold text-gray-800 m-4">{recipe.title}</h2>
+            <h2 className="text-xl font-semibold text-gray-800 m-4">{formatText(recipe.title)}</h2>
             <AsyncImage
                 className="w-full h-52 object-cover flex justify-center content-center"
-                src={recipe.image_url}
-                alt={recipe.title}
+                src={formatUrlImageSmall(recipe.image_url)}
+                alt={formatText(recipe.title)}
                 loader={<Spinner />}
                 Transition={Fade}
             />
