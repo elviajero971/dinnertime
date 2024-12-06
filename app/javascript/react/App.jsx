@@ -5,7 +5,7 @@ import RecipeDetails from './components/details/RecipeDetails';
 
 const App = () => {
     return (
-        <div className="text-center min-h-screen flex flex-col items-center justify-center box-border bg-white">
+        <div className="text-center min-h-screen flex flex-col items-center justify-center box-border bg-white mx-5 mb-5">
             <Router future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
                 <Routes>
                     <Route path="/" element={<RecipeList />} />

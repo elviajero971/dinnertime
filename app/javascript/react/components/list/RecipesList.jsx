@@ -1,7 +1,6 @@
 // src/components/RecipeList.js
 import React, { useState, useEffect, useRef } from 'react';
 import SearchBar from './SearchBar';
-import RecipesListHeader from './RecipesListHeader';
 import RecipeContainer from './RecipesListContainer';
 import useFetchRecipes from '../../hooks/useFetchRecipes';
 
@@ -37,8 +36,7 @@ const RecipeList = () => {
 
     return (
         <>
-            <SearchBar onSearch={handleSearch} />
-            <RecipesListHeader recipesCount={recipesCount} />
+            <SearchBar recipesCount={recipesCount} onSearch={handleSearch} />
             <RecipeContainer recipes={recipes} lastRecipeRef={lastRecipeRef} />
             {loading && <p>Loading...</p>}
         </>
