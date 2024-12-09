@@ -19,7 +19,7 @@ const SearchBar = ({ onSearch, recipesCount }) => {
     }
 
     return (
-        <div className="flex flex-col justify-start items-center gap-4 my-5 sticky top-0 bg-white z-10 w-full h-28 min-h-fit">
+        <div className="flex flex-col justify-start items-center gap-4 my-5 sticky top-0 pt-5 bg-white z-10 w-full h-28 min-h-fit">
             <div className="flex flex-wrap justify-center gap-2">
                 <input
                     className="w-full sm:w-72 md:w-96 p-2 border-2 border-gray-300 text-gray-800 rounded-md text-base outline-none bg-white"
