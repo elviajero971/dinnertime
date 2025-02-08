@@ -62,6 +62,15 @@ RSpec.describe Recipes::RecipesQuery, type: :query do
 
         expect(result).to eq([ recipe3 ])
       end
+
+      it 'handles special characters' do
+        query = Recipes::RecipesQuery.new(search: '%', page: 1, per_page: 3)
+        result = query.perform
+
+        puts result
+
+        expect(result).to be_empty
+      end
     end
 
     context 'with pagination' do
